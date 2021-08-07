@@ -1,6 +1,12 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+# include <iostream>
+# include <iomanip>
+# include <limits>
+# include <string>
+# include <cstdlib>
+
 class Fixed
 {
     private:
@@ -15,7 +21,7 @@ class Fixed
         //Overload assignment operator
         Fixed& operator=(const Fixed& other);
         int getRawBits( void ) const;
-        int void setRawBits( int const raw );
-}
+        void setRawBits( int const raw );
+};
 
 #endif
