@@ -6,6 +6,7 @@
 # include <limits>
 # include <string>
 # include <cstdlib>
+# include <cmath>
 
 class Fixed
 {
@@ -18,10 +19,18 @@ class Fixed
         ~Fixed();
         //copy constructor
         Fixed(const Fixed& other);
+        Fixed(const int fixed_point);
+        Fixed(const float fixed_point);
         //Overload assignment operator
         Fixed& operator=(const Fixed& other);
         int getRawBits( void ) const;
         void setRawBits( int const raw );
+        float toFloat ( void ) const;
+        int toInt ( void ) const;
 };
+
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+        
 
 #endif
