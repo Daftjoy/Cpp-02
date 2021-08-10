@@ -6,7 +6,7 @@
 /*   By: antmarti <antmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:27:22 by antmarti          #+#    #+#             */
-/*   Updated: 2021/08/10 18:27:23 by antmarti         ###   ########.fr       */
+/*   Updated: 2021/08/10 19:31:05 by antmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,64 @@ Fixed& Fixed::operator=(const Fixed& other)
     std::cout << "Assignation operator called" << std::endl;
     this->setRawBits(other.getRawBits());
     return *this;
+}
+
+bool Fixed::operator>(const Fixed& other)
+{
+    return(this->getRawBits() >  other.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed& other)
+{
+    return(this->getRawBits() <  other.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed& other)
+{
+    return(this->getRawBits() >=  other.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed& other)
+{
+    return(this->getRawBits() <=  other.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed& other)
+{
+    return(this->getRawBits() ==  other.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed& other)
+{
+    return(this->getRawBits() !=  other.getRawBits());
+}
+
+Fixed Fixed::operator+(const Fixed& other)
+{
+    Fixed fix;
+    fix.setRawBits(this->getRawBits() + other.getRawBits());
+    return(fix);
+}
+
+Fixed Fixed::operator-(const Fixed& other)
+{
+    Fixed fix;
+    fix.setRawBits(this->getRawBits() - other.getRawBits());
+    return(fix);
+}
+
+Fixed Fixed::operator*(const Fixed& other)
+{
+    Fixed fix;
+    fix.setRawBits((this->getRawBits() * other.getRawBits()) >> this->fractional_bits);
+    return(fix);
+}
+
+Fixed Fixed::operator/(const Fixed& other)
+{
+    Fixed fix;
+    fix.setRawBits((this->getRawBits() << this->fractional_bits) / other.getRawBits());
+    return(fix);
 }
 
 int Fixed::getRawBits(void) const

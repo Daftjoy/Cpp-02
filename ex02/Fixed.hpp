@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: antmarti <antmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/10 18:27:10 by antmarti          #+#    #+#             */
-/*   Updated: 2021/08/10 18:27:11 by antmarti         ###   ########.fr       */
+/*   Created: 2021/08/10 18:27:26 by antmarti          #+#    #+#             */
+/*   Updated: 2021/08/10 19:28:01 by antmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits>
 # include <string>
 # include <cstdlib>
+# include <cmath>
 
 class Fixed
 {
@@ -28,12 +29,37 @@ class Fixed
     public:
         Fixed(void);
         ~Fixed();
-        //copy constructor
+        
+        //copy constructors
         Fixed(const Fixed& other);
-        //Overload assignment operator
+        Fixed(const int fixed_point);
+        Fixed(const float fixed_point);
+        
+        //Overload assignment operators
         Fixed& operator=(const Fixed& other);
+        
+        //Comparison operators
+        bool operator>(const Fixed&  other);
+        bool operator<(const Fixed&  other);
+        bool operator>=(const Fixed&  other);
+        bool operator<=(const Fixed&  other);
+        bool operator==(const Fixed&  other);
+        bool operator!=(const Fixed&  other);
+        
+        //Arithmetic operators
+        Fixed operator+(const Fixed& other);
+        Fixed operator-(const Fixed& other);
+        Fixed operator*(const Fixed& other);
+        Fixed operator/(const Fixed& other);
+        
         int getRawBits( void ) const;
         void setRawBits( int const raw );
+        float toFloat ( void ) const;
+        int toInt ( void ) const;
 };
+
+
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+        
 
 #endif
