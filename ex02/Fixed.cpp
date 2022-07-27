@@ -6,7 +6,7 @@
 /*   By: antmarti <antmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:27:22 by antmarti          #+#    #+#             */
-/*   Updated: 2022/06/30 21:17:34 by antmarti         ###   ########.fr       */
+/*   Updated: 2022/07/05 20:11:32 by antmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,41 +156,36 @@ int Fixed::toInt (void) const
 
 
 
-Fixed &Fixed::min( Fixed &a, Fixed &b)
+Fixed &Fixed::min( Fixed &first, Fixed &second)
 {
-	if (a > b)
-		return (b);
-	return (a);
+	if (first > second)
+		return (second);
+	return (first);
 }
 
 
-Fixed &min( Fixed &a, Fixed &b)
+Fixed const &Fixed::min( Fixed const &first, Fixed const &second)
 {
-	return (Fixed::min(a, b));
+	if (first > second)
+		return (second);
+	return (first);
 }
 
 
-Fixed const &Fixed::min( Fixed const &a, Fixed const &b)
-{
-	if (a > b)
-		return (b);
-	return (a);
-}
-
-
-Fixed const &min( Fixed const &a, Fixed const &b)
-{
-	return (Fixed::min(a, b));
-}
-
-/*static Fixed& max(const Fixed& first, const Fixed& second)
+Fixed& Fixed::max(Fixed& first, Fixed& second)
 {
     if (first > second)
-    {
-        return (*first);
-    }    
-    return (*second);
-}*/
+        return (first);   
+    return (second);
+}
+
+Fixed const &Fixed::max( Fixed const &first, Fixed const &second)
+{
+	if (first > second)
+        return (first);   
+    return (second);
+}
+ 
  
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
 {

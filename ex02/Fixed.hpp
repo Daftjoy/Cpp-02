@@ -6,7 +6,7 @@
 /*   By: antmarti <antmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/10 18:27:26 by antmarti          #+#    #+#             */
-/*   Updated: 2022/06/30 21:29:57 by antmarti         ###   ########.fr       */
+/*   Updated: 2022/07/05 19:52:19 by antmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ class Fixed
         
         static Fixed &min(Fixed &a, Fixed &b);
         static Fixed const &min(Fixed const &a, Fixed const &b);
+        static Fixed &max(Fixed &a, Fixed &b);
+        static Fixed const &max(Fixed const &a, Fixed const &b);
 
        
 };
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
-Fixed &min(Fixed &a, Fixed &b);
-
 
         
 
